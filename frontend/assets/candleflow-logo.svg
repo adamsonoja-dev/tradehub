@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-labelledby="title desc">
+  <title id="title">Candleflow logo</title>
+  <desc id="desc">Candleflow wordmark with a rising candlestick chart motif.</desc>
+  <defs>
+    <linearGradient id="mark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9a86a"/>
+      <stop offset="1" stop-color="#e6c88a"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="96" rx="18" fill="#10141c"/>
+  <path d="M20 70 36 25l16 45M28 52h16M58 70V28l14 20 14-20v42M104 70V30l16 24 16-24v40" fill="none" stroke="url(#mark)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30 78h108" stroke="#f4efe6" stroke-opacity=".16" stroke-width="2"/>
+  <text x="152" y="59" fill="#f4efe6" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1">Candleflow</text>
+</svg>

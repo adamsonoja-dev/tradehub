@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Sign Up</title>
+  <meta name="description" content="Create a free Candleflow account and start risk-free demo trading across crypto, stocks, forex and commodities." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Sign Up" />
+  <meta property="og:description" content="Create a free account and start risk-free demo trading." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Candleflow</p>
+        <h1>Create account</h1>
+      </div>
+      <a class="ghost-btn" href="index.html">Candleflow</a>
+    </header>
+    <div class="auth-card">
+      <form class="auth-form active-form" id="signupForm">
+        <h3>Join Candleflow</h3>
+        <label class="visually-hidden" for="signupName">Full name</label>
+        <input type="text" id="signupName" name="name" placeholder="Full name" autocomplete="name" required>
+        <label class="visually-hidden" for="signupEmail">Email address</label>
+        <input type="email" id="signupEmail" name="email" placeholder="Email address" autocomplete="email" required>
+        <label class="visually-hidden" for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" name="password" placeholder="Password (min. 8 characters)" autocomplete="new-password" minlength="8" required>
+        <button type="submit" class="primary-btn">Create Account</button>
+      </form>
+    </div>
+  </main>
+  <script src="js/landing.js"></script>
+</body>
+</html>

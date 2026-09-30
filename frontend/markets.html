@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Markets</title>
+  <meta name="description" content="Explore live market watch data for crypto, stocks, forex and commodities on Candleflow." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Markets" />
+  <meta property="og:description" content="Live market watch across crypto, stocks, forex and commodities." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Discover</p>
+        <h1>Market Watch</h1>
+        <p class="admin-subtitle">Live prices and daily change across major markets</p>
+      </div>
+      <a class="ghost-btn" href="dashboard.html">Back to Dashboard</a>
+    </header>
+    <div class="market-category-tabs" role="tablist" aria-label="Market categories">
+      <button class="category-btn active" data-category="crypto" type="button" role="tab" aria-selected="true">Crypto</button>
+      <button class="category-btn" data-category="stocks" type="button" role="tab" aria-selected="false">Stocks</button>
+      <button class="category-btn" data-category="fx" type="button" role="tab" aria-selected="false">Forex & Commodities</button>
+    </div>
+    <p class="eyebrow" id="marketUpdated" style="text-align:center;margin:6px 0 0;">Prices update automatically</p>
+    <div class="market-grid" id="marketGrid"></div>
+  </main>
+  <script src="js/markets.js"></script>
+</body>
+</html>

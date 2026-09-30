@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Candleflow | Admin Dashboard</title><meta name="description" content="Candleflow admin dashboard for monitoring user activity, accounts and platform health."><meta name="theme-color" content="#0b0d12"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><link rel="icon" type="image/svg+xml" href="favicon.svg"></head><body><script src="js/nav.js"></script><main class="main-content standalone-page"><header class="topbar admin-topbar"><div><p class="eyebrow">Control Center</p><h1>Admin Dashboard</h1><p class="admin-subtitle">Monitor user activity from account creation onward.</p></div><a class="ghost-btn" href="dashboard.html">Back to Dashboard</a></header>
+
+    <section class="admin-stats-grid" id="adminStatCards"></section>
+
+    <section class="panel admin-main-grid">
+      <div>
+        <div class="panel-header"><div><h2>User Activity</h2><p id="activityCountLabel">Live activity log</p></div></div>
+        <div class="admin-filter-tabs" id="adminFilterTabs">
+          <button class="filter-btn active" data-type="all">All</button>
+          <button class="filter-btn" data-type="signup">Signups</button>
+          <button class="filter-btn" data-type="login">Logins</button>
+          <button class="filter-btn" data-type="logout">Logouts</button>
+          <button class="filter-btn" data-type="deposit">Deposits</button>
+          <button class="filter-btn" data-type="withdrawal">Withdrawals</button>
+          <button class="filter-btn" data-type="trade">Trades</button>
+        </div>
+        <div class="table-scroll">
+          <table id="activityTable">
+            <thead><tr><th>Time</th><th>Event</th><th>User</th><th>Detail</th></tr></thead>
+            <tbody id="activityBody"></tbody>
+          </table>
+        </div>
+        <p class="admin-empty" id="activityEmpty">No activity recorded yet.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><div><h2>Registered Users</h2><p id="userCountLabel">0 accounts</p></div></div>
+      <div class="table-scroll">
+        <table id="usersTable">
+          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th>Status</th></tr></thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </div>
+      <p class="admin-empty" id="usersEmpty">No users have registered yet.</p>
+    </section>
+
+</main><script src="js/admin.js"></script></body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Portfolio</title>
+  <meta name="description" content="Your Candleflow demo portfolio — balance, deposits, withdrawals, transactions and closed trades." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Portfolio" />
+  <meta property="og:description" content="Track your demo portfolio value, transactions and closed trades." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Overview</p>
+        <h1>Portfolio</h1>
+        <p class="admin-subtitle">A snapshot of your demo account</p>
+      </div>
+      <a class="ghost-btn" href="dashboard.html">Back to Dashboard</a>
+    </header>
+    <div class="portfolio-summary">
+      <div class="card mini-card">
+        <p>Balance</p>
+        <h3 id="portfolioValue">$0.00</h3>
+      </div>
+      <div class="card mini-card">
+        <p>Net Realised P/L</p>
+        <h3 id="portfolioChange" class="profit">$0.00</h3>
+      </div>
+      <div class="card mini-card">
+        <p>Open Positions</p>
+        <h3 id="portfolioPositions">0</h3>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Account Balance</h2>
+          <p>Demo account</p>
+        </div>
+      </div>
+      <div class="account-cards" style="margin-bottom:0">
+        <article class="card">
+          <p>Balance</p>
+          <h2 id="balanceValue">$0.00</h2>
+        </article>
+        <article class="card">
+          <p>Total Deposited</p>
+          <h2 id="totalDeposited">$0.00</h2>
+        </article>
+        <article class="card">
+          <p>Total Withdrawn</p>
+          <h2 id="totalWithdrawn">$0.00</h2>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:20px">
+      <div class="panel-header">
+        <div>
+          <h2>Transactions</h2>
+          <p>Deposit and withdrawal history</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Type</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody id="transactionsBody">
+            <tr class="empty-row"><td colspan="4">Sign in to view transactions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:20px">
+      <div class="panel-header">
+        <div>
+          <h2>Closed Trades</h2>
+          <p>Completed trade history</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Market</th><th>Side</th><th>Lots</th><th>Entry</th><th>Exit</th><th>P/L</th></tr>
+          </thead>
+          <tbody id="closedTradesBody">
+            <tr class="empty-row"><td colspan="7">No closed trades yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/portfolio.js"></script>
+</body>
+</html>

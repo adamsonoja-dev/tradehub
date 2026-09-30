@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Settings</title>
+  <meta name="description" content="Manage your Candleflow profile, account mode and security settings." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Settings" />
+  <meta property="og:description" content="Manage your Candleflow account settings." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Account</p>
+        <h1>Settings</h1>
+        <p class="admin-subtitle">Manage your profile and account preferences</p>
+      </div>
+      <a class="ghost-btn" href="dashboard.html">Back to Dashboard</a>
+    </header>
+    <div class="settings-grid">
+      <div class="panel settings-card">
+        <h3>Profile</h3>
+        <div class="setting-row">
+          <label for="settingsName">Display Name</label>
+          <input type="text" id="settingsName" name="name" value="" placeholder="Your name" autocomplete="name">
+        </div>
+        <div class="setting-row">
+          <label for="settingsEmail">Email</label>
+          <input type="email" id="settingsEmail" value="" disabled>
+        </div>
+        <div class="setting-row">
+          <label for="settingsRole">Role</label>
+          <input type="text" id="settingsRole" value="" disabled>
+        </div>
+        <div class="setting-row">
+          <label for="settingsJoined">Joined</label>
+          <input type="text" id="settingsJoined" value="" disabled>
+        </div>
+        <button class="primary-btn" id="saveSettings" type="button" style="margin-top:8px">Save Changes</button>
+      </div>
+      <div class="panel settings-card">
+        <h3>Account Mode</h3>
+        <div class="mode-toggle">
+          <span class="mode-badge">Demo Trading</span>
+        </div>
+        <p class="mode-note">All trading is currently demo-only. Live trading is disabled for now.</p>
+      </div>
+      <div class="panel settings-card">
+        <h3>Security</h3>
+        <p class="mode-note">Sessions expire after 7 days. Sign out from any device to invalidate your session.</p>
+        <button class="ghost-btn" id="signOutAll" type="button" style="margin-top:12px">Sign Out</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/settings.js"></script>
+</body>
+</html>

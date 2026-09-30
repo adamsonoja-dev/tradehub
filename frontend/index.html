@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candleflow — Trade with clarity</title>
+    <meta name="description" content="Candleflow is a modern trading workspace for crypto, stocks, forex and commodities — live market data, a full charting desk, and risk-free demo trading." />
+    <meta name="theme-color" content="#0b0d12" />
+    <meta property="og:title" content="Candleflow — Trade with clarity" />
+    <meta property="og:description" content="One focused workspace for every market decision. Live prices, advanced charts, and demo trading." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Candleflow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  </head>
+  <body>
+    <script src="js/nav.js"></script>
+    <main class="main-content standalone-page">
+      <header class="topbar">
+        <div><p class="eyebrow">Candleflow</p><h1>Trade with clarity.</h1></div>
+        <a class="primary-btn" href="dashboard.html" id="topCta">Open Dashboard</a>
+      </header>
+      <section class="landing-hero panel">
+        <div class="landing-copy">
+          <p class="eyebrow">Built for modern traders</p>
+          <h2>One focused workspace for every market decision.</h2>
+          <p class="hero-text">Monitor crypto, stocks, forex, and commodities, then move from signal to order with a clear account view.</p>
+          <div class="hero-actions"><a class="primary-btn" href="dashboard.html" id="homeCta">Open Dashboard</a><a class="ghost-btn" href="markets.html">Explore Markets</a></div>
+          <div class="hero-metrics"><div><strong>24/7</strong><span>Market monitor</span></div><div><strong>19+</strong><span>Market pairs</span></div><div><strong>100%</strong><span>Risk-free demo</span></div></div>
+        </div>
+        <div class="landing-preview"><img class="hero-image" src="assets/market-monitor.svg" alt="Market monitor showing a rising trading chart" /><div class="mini-foot"><div><small>BTC/USD</small><strong>Live market view</strong></div><span class="hero-connection profit" id="heroConnection">Checking…</span></div></div>
+      </section>
+      <div class="feature-grid"><article class="card feature-card"><h3>Multi-asset coverage</h3><p>Track crypto, stocks, FX pairs, and commodities from one workspace.</p></article><article class="card feature-card"><h3>Fast execution</h3><p>Place orders with pip-aware profit and loss estimates before execution.</p></article><article class="card feature-card"><h3>Account control</h3><p>Manage your demo balance with server-backed account records.</p></article></div>
+      <div class="home-gallery"><div class="gallery-copy"><p class="eyebrow">Designed for action</p><h3>See the trade before you place it.</h3><p>Move from market signal to an informed order while keeping the important numbers close.</p></div><img src="assets/trade-execution.svg" alt="Trade execution ticket with buy and sell controls" /></div>
+
+      <section class="panel news-section landing-news" aria-labelledby="landingNewsHeading">
+        <div class="panel-header">
+          <div>
+            <h2 id="landingNewsHeading">Latest Market News</h2>
+            <p>Live headlines from the markets</p>
+          </div>
+        </div>
+        <div class="news-ticker" id="landingNewsTicker" aria-live="polite" aria-label="Market news headlines">
+          <span class="news-ticker-track" id="landingNewsTrack">Loading headlines…</span>
+        </div>
+        <div class="news-grid" id="landingNewsGrid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
+      </section>
+    </main>
+
+    <div class="auth-modal" id="authModal">
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth="login" type="button">Log In</button>
+          <button class="auth-tab" data-auth="signup" type="button">Sign Up</button>
+        </div>
+        <p class="auth-error" id="authError" style="display:none"></p>
+        <form class="auth-form active-form" id="loginForm">
+          <h3>Welcome back</h3>
+          <label class="visually-hidden" for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" name="email" placeholder="Email address" autocomplete="email" required>
+          <label class="visually-hidden" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" placeholder="Password" autocomplete="current-password" required>
+          <button type="submit" class="primary-btn">Log In</button>
+        </form>
+        <form class="auth-form" id="signupForm">
+          <h3>Create your account</h3>
+          <label class="visually-hidden" for="signupName">Full name</label>
+          <input type="text" id="signupName" name="name" placeholder="Full name" autocomplete="name" required>
+          <label class="visually-hidden" for="signupEmail">Email address</label>
+          <input type="email" id="signupEmail" name="email" placeholder="Email address" autocomplete="email" required>
+          <label class="visually-hidden" for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" placeholder="Password (min. 8 characters)" autocomplete="new-password" minlength="8" required>
+          <button type="submit" class="primary-btn">Create Account</button>
+        </form>
+        <button class="ghost-btn" type="button" style="margin-top:14px;width:100%" id="authModalClose">Close</button>
+      </div>
+    </div>
+
+    <script src="js/landing.js"></script>
+  </body>
+</html>

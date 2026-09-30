@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Trades</title>
+  <meta name="description" content="Review your open positions and closed trade history in Candleflow's activity log." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Trades" />
+  <meta property="og:description" content="Track open positions and closed trade history." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Activity</p>
+        <h1>Trade History</h1>
+        <p class="admin-subtitle">Open positions and completed trades for your demo account</p>
+      </div>
+      <a class="ghost-btn" href="dashboard.html">Back to Dashboard</a>
+    </header>
+
+    <section class="account-cards">
+      <article class="card">
+        <p>Total Trades</p>
+        <h2 id="totalTrades">0</h2>
+      </article>
+      <article class="card">
+        <p>Winning Trades</p>
+        <h2 id="winTrades" class="profit">0</h2>
+      </article>
+      <article class="card">
+        <p>Net P/L</p>
+        <h2 id="netPnL">$0.00</h2>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Open Positions</h2>
+          <p>Currently active trades</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Market</th><th>Side</th><th>Lots</th><th>Entry</th><th>Current</th><th>P/L</th><th></th></tr>
+          </thead>
+          <tbody id="openTradesBody">
+            <tr class="empty-row"><td colspan="8">Sign in through the Dashboard to view open positions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:20px">
+      <div class="panel-header">
+        <div>
+          <h2>Closed Trades</h2>
+          <p>Completed trade history</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Market</th><th>Side</th><th>Lots</th><th>Entry</th><th>Exit</th><th>P/L</th></tr>
+          </thead>
+          <tbody id="closedTradesBody">
+            <tr class="empty-row"><td colspan="7">No closed trades yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/trades.js"></script>
+</body>
+</html>

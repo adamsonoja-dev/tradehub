@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Dashboard</title>
+  <meta name="description" content="Candleflow trading desk — live charts, order ticket, demo account funding, and market watch in one workspace.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta property="og:title" content="Candleflow | Dashboard">
+  <meta property="og:description" content="One focused workspace for every market decision.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Candleflow">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Trading Desk</p>
+        <h1>Dashboard</h1>
+        <p class="admin-subtitle" id="lastUpdated">Waiting for market data...</p>
+      </div>
+      <div class="profile-panel">
+        <div class="avatar" id="userInitial">T</div>
+        <div>
+          <strong id="userName">Guest</strong>
+          <small id="sessionBadge">Guest Mode</small>
+        </div>
+        <button class="ghost-btn" id="authToggle" type="button">Login</button>
+        <button class="ghost-btn" id="logoutBtn" type="button" style="display:none">Logout</button>
+      </div>
+    </header>
+
+    <section class="account-cards">
+      <article class="card">
+        <p>Balance</p>
+        <h2 id="balanceValue">$0.00</h2>
+      </article>
+      <article class="card">
+        <p>Equity</p>
+        <h2 id="equityValue">$0.00</h2>
+      </article>
+      <article class="card">
+        <p>Today's P/L</p>
+        <h2 id="todayPnL" class="profit">$0.00</h2>
+      </article>
+      <article class="card">
+        <p>Win Rate</p>
+        <h2 id="winRateValue">&mdash;</h2>
+      </article>
+    </section>
+
+    <div class="dashboard-grid">
+      <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+        <section class="panel chart-panel">
+          <div class="panel-header">
+            <div class="symbol-picker">
+              <h2 id="chartTitle">BTC/USD</h2>
+              <button class="symbol-search-btn" id="symbolSearchBtn" type="button" title="Search pairs (press /)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Search</span><span class="kbd">/</span>
+              </button>
+              <p id="chartPrice">Loading...</p>
+            </div>
+            <div class="timeframes">
+              <div class="timeframe-scroll">
+                <button class="timeframe-btn" type="button">15m</button>
+                <button class="timeframe-btn" type="button">1H</button>
+                <button class="timeframe-btn" type="button">4H</button>
+                <button class="timeframe-btn selected" type="button">1D</button>
+                <button class="timeframe-btn" type="button">1W</button>
+              </div>
+              <div>
+                <p id="marketPulse" style="font-size:12px;color:var(--muted);margin-bottom:4px">Connecting...</p>
+                <button class="mini-btn" id="fullscreenChartBtn" type="button">Full Screen</button>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <div id="priceChart"></div>
+            <div class="chart-loader" id="chartLoader">
+              <div class="spinner"></div>
+              <span>Loading chart data...</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Open Positions</h2>
+              <p>Open positions for the active account</p>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Market</th><th>Side</th><th>Lots</th><th>Entry</th><th>Current</th><th>P/L</th><th></th></tr>
+              </thead>
+              <tbody id="tradesBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Market Watch</h2>
+              <p>Quote board</p>
+            </div>
+          </div>
+          <div class="market-category-tabs">
+            <button class="category-btn active" data-category="crypto" type="button">Crypto</button>
+            <button class="category-btn" data-category="stocks" type="button">Stocks</button>
+            <button class="category-btn" data-category="fx" type="button">Forex & Commodities</button>
+          </div>
+          <div class="market-grid" id="marketWatchGrid"></div>
+        </section>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+        <section class="panel account-funding">
+          <div class="panel-header compact">
+            <div>
+              <h2>Account Funding</h2>
+              <p id="fundingModeLabel">Demo account</p>
+            </div>
+            <strong id="fundingBalance">$0.00</strong>
+          </div>
+          <div class="mode-toggle">
+            <span class="mode-badge">Demo Trading</span>
+          </div>
+          <small class="mode-note">Live trading is disabled for now. All activity uses simulated funds.</small>
+          <div class="funding-controls">
+            <input id="fundingAmount" type="number" min="0.01" step="0.01" placeholder="Amount in USD">
+            <button class="primary-btn" id="depositButton" type="button">Deposit</button>
+            <button class="ghost-btn" id="withdrawButton" type="button">Withdraw</button>
+          </div>
+          <small id="fundingNote">Sign in to manage this account balance.</small>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Place Trade</h2>
+              <p>Order ticket</p>
+            </div>
+          </div>
+          <div class="trade-input">
+            <label for="orderType">Order Type</label>
+            <div class="order-type-toggle">
+              <button class="order-type-btn active" id="orderTypeMarket" type="button">Market</button>
+              <button class="order-type-btn" id="orderTypeLimit" type="button">Limit</button>
+            </div>
+          </div>
+          <div class="trade-input">
+            <label for="tradePair">Pair</label>
+            <select id="tradePair"></select>
+          </div>
+          <div class="trade-input hidden" id="entryPriceWrap">
+            <label for="entryPrice">Limit Entry Price</label>
+            <input id="entryPrice" type="number" min="0" step="0.0001">
+          </div>
+          <div class="trade-buttons">
+            <button class="trade-btn buy-btn" id="buyButton" type="button">BUY</button>
+            <button class="trade-btn sell-btn" id="sellButton" type="button">SELL</button>
+          </div>
+          <div class="trade-input">
+            <label for="lotSize">Lot Size</label>
+            <input id="lotSize" type="number" min="0.01" step="0.01">
+          </div>
+          <div class="trade-input">
+            <label for="stopLoss">Stop Loss</label>
+            <input id="stopLoss" type="number" step="0.0001">
+          </div>
+          <div class="trade-input">
+            <label for="takeProfit">Take Profit</label>
+            <input id="takeProfit" type="number" step="0.0001">
+          </div>
+          <div class="trade-preview">
+            <div>
+              <span>Potential loss</span>
+              <strong id="potentialLoss">$0.00</strong>
+            </div>
+            <div>
+              <span>Potential profit</span>
+              <strong id="potentialProfit">$0.00</strong>
+            </div>
+            <div>
+              <span>Pip value</span>
+              <strong id="pipValue">$0.00 / pip</strong>
+            </div>
+            <small id="previewNote">Select trade inputs to calculate.</small>
+          </div>
+          <button id="placeTradeButton" class="place-trade-btn" type="button">PLACE TRADE</button>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Markets</h2>
+              <p>Quick switching</p>
+            </div>
+          </div>
+          <div class="market-list" id="marketsList"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Crypto Converter</h2>
+              <p>Powered by FreeCryptoAPI</p>
+            </div>
+          </div>
+          <div class="converter-row">
+            <input id="convertAmount" type="number" min="0.01" step="0.01" placeholder="Amount" value="1">
+            <select id="convertFrom">
+              <option value="BTC">BTC</option>
+              <option value="ETH">ETH</option>
+              <option value="SOL">SOL</option>
+              <option value="ADA">ADA</option>
+              <option value="XRP">XRP</option>
+              <option value="DOGE">DOGE</option>
+              <option value="LINK">LINK</option>
+            </select>
+            <span class="converter-equals">=</span>
+            <span id="convertResult" class="converter-result">&mdash;</span>
+            <select id="convertTo">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+              <option value="BTC">BTC</option>
+              <option value="ETH">ETH</option>
+            </select>
+          </div>
+          <button class="primary-btn" id="convertButton" type="button">Convert</button>
+          <small id="convertNote" style="display:block;margin-top:10px">Convert between crypto and fiat currencies.</small>
+        </section>
+
+        <section class="panel" id="adminPanel">
+          <div class="panel-header">
+            <div>
+              <h2>Admin Overview</h2>
+              <p>Operations monitor</p>
+            </div>
+            <a class="ghost-btn" href="admin.html">Open Admin Dashboard</a>
+          </div>
+          <div class="admin-stats-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+            <article class="card admin-stat-card accent-primary"><p>Total Accounts</p><h2 id="adminTotalAccounts">0</h2></article>
+            <article class="card admin-stat-card accent-secondary"><p>Active Traders</p><h2 id="adminActiveAccounts">0</h2></article>
+            <article class="card admin-stat-card accent-amber"><p>Trade Volume</p><h2 id="adminTradeVolume">$0.00</h2></article>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Joined</th></tr></thead>
+              <tbody id="adminAccountsBody"></tbody>
+            </table>
+          </div>
+          <div class="panel-header" style="margin-top:18px">
+            <div>
+              <h2>Recent Trades</h2>
+              <p>Recent activity</p>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Asset</th><th>User</th><th>Side</th><th>P/L</th></tr></thead>
+              <tbody id="adminTradesBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div class="symbol-modal-overlay" id="symbolDropdown" hidden>
+    <div class="symbol-modal">
+      <div class="symbol-modal-header">
+        <span class="symbol-modal-title">Switch Symbol</span>
+        <button class="symbol-modal-close" id="symbolModalClose" type="button">&times;</button>
+      </div>
+      <input type="text" id="symbolSearchInput" placeholder="Search pairs or markets..." autocomplete="off">
+      <div class="symbol-results" id="symbolResults"></div>
+    </div>
+  </div>
+
+  <div class="auth-modal" id="authModal">
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth="login" type="button">Log In</button>
+        <button class="auth-tab" data-auth="signup" type="button">Sign Up</button>
+      </div>
+      <form class="auth-form active-form" id="loginForm">
+        <h3>Welcome back</h3>
+        <input type="email" id="loginEmail" placeholder="Email address" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit" class="primary-btn">Log In</button>
+      </form>
+      <form class="auth-form" id="signupForm">
+        <h3>Join Candleflow</h3>
+        <input type="text" id="signupName" placeholder="Full name" required>
+        <input type="email" id="signupEmail" placeholder="Email address" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button type="submit" class="primary-btn">Create Account</button>
+      </form>
+      <button class="ghost-btn" type="button" id="authModalClose" style="margin-top:14px;width:100%">Close</button>
+    </div>
+  </div>
+
+  <div class="trade-confirm-modal" id="tradeConfirmModal">
+    <div class="trade-confirm-card">
+      <div class="panel-header">
+        <div>
+          <h2>Confirm Trade</h2>
+          <p>Review your order</p>
+        </div>
+        <button class="ghost-btn" id="tradeConfirmClose" type="button">Cancel</button>
+      </div>
+      <div class="trade-confirm-details" id="tradeConfirmDetails"></div>
+      <div class="trade-confirm-actions">
+        <button class="primary-btn" id="tradeConfirmSubmit" type="button">Confirm</button>
+        <button class="ghost-btn" id="tradeConfirmCancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="js/script.js?v=2"></script>
+</body>
+</html>

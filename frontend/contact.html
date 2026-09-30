@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candleflow | Contact</title>
+  <meta name="description" content="Contact the Candleflow support team with any questions about demo trading, accounts, or the platform." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="Candleflow | Contact" />
+  <meta property="og:description" content="Get in touch with the Candleflow support team." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <script src="js/nav.js"></script>
+  <main class="main-content standalone-page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Support</p>
+        <h1>Contact Candleflow</h1>
+        <p class="admin-subtitle">We usually reply within 24 hours.</p>
+      </div>
+      <a class="ghost-btn" href="index.html">Candleflow</a>
+    </header>
+    <div class="contact-grid">
+      <div class="panel contact-card">
+        <h3>Talk to our team</h3>
+        <p>Email: support@candleflow.io</p>
+        <p>Phone: +1 (415) 555-0149</p>
+        <p>Office Hours: Mon-Fri, 9:00 AM to 6:00 PM EST</p>
+      </div>
+      <div class="panel contact-card">
+        <h3>Send a message</h3>
+        <form class="contact-form" id="contactForm" novalidate>
+          <label class="visually-hidden" for="contactName">Full name</label>
+          <input type="text" id="contactName" name="name" placeholder="Full name" autocomplete="name" required>
+          <label class="visually-hidden" for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" placeholder="Email" autocomplete="email" required>
+          <label class="visually-hidden" for="contactMessage">Message</label>
+          <textarea rows="4" id="contactMessage" name="message" placeholder="How can we help?" required></textarea>
+          <button type="submit" class="primary-btn" id="contactSubmit">Submit</button>
+        </form>
+        <div id="contactSuccess" style="display:none" class="contact-success">
+          <p>Thank you for your message. Our team will get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>
